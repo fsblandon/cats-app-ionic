@@ -1,0 +1,19 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title>Cat Breeds</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar 
+    placeholder="Buscar raza" 
+    (ionInput)="filterCats($event)"
+    [value]="searchTerm"
+    debounce="300">
+  </ion-searchbar>
+  <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+  <app-list-cat 
+    [cats]="filteredCats" 
+    *ngIf="!isLoading">
+  </app-list-cat>
+</ion-content>

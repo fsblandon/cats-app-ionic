@@ -1,0 +1,34 @@
+<ion-header 
+  translucent="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button 
+        defaultHref="/cats/landing"
+        text="Regresar">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ cat?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="cat-image-container">
+<img 
+  [src]="cat?.image?.url"
+  *ngIf="cat?.image?.url"
+  alt="{{cat?.name}}">
+</div>
+
+
+<ion-content class="ion-padding content-text">
+  <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+  <div *ngIf="!isLoading && cat">
+    <h2>{{ cat.name }}</h2>
+    <p>{{ cat.description }}</p>
+    <p><strong>Nombre del país:</strong> {{ cat.origin }}</p>
+    <p><strong>Temperamento:</strong> {{ cat.temperament }}</p>
+    <p><strong>Vida:</strong> {{ cat.life_span }} años</p>
+    <p><strong>Adaptabilidad:</strong> {{ cat.adaptability }}</p>
+    <p><strong>Nivel Afecto:</strong> {{ cat.affection_level }}</p>
+    <a [href]="cat.wikipedia_url" target="_blank" *ngIf="cat.wikipedia_url">Wiki</a>
+  </div>
+</ion-content>

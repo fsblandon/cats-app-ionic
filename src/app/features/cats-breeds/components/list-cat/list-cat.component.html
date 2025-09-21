@@ -1,0 +1,7 @@
+
+<ion-card
+  *ngFor="let cat of cats"
+  [routerLink]="['/cats/detail', cat.id]"
+  [queryParams]="{ imageUrl: cat.image?.url || '' }">
+  <app-item-cat [cat]="cat"></app-item-cat>
+</ion-card>
